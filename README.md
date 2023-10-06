@@ -37,3 +37,6 @@ Content-Security-Policy: default-src 'self' http://example.com
 Cross-Origin-Resource-Policy - tells the browser blocks no-cors cross-origin/cross-site requests to the given resource
 
 Cross-Origin-Resource-Policy: same-site
+
+
+Credit: https://devpress.csdn.net/k8s/62f4e6dfc6770329307fa892.html
