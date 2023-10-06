@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+namespace: my-app
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "server: hide";
+      more_set_headers "Content-Type: text/html; charset=UTF-8";
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "X-Frame-Options: DENY";
+      more_set_headers "X-Xss-Protection: 0";
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
+      more_set_headers "Content-Security-Policy: default-src 'self' http://example.com";
+      more_set_headers "Cross-Origin-Resource-Policy: same-site";
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
